@@ -26,4 +26,11 @@ router.post('/', (req, res) => {
   newWeigher.save().then((weigher) => res.json(weigher));
 });
 
+// @route   DELETE api/weighers
+// @desc    Delete all weighers
+// @access  Public
+router.delete('/', (req, res) => {
+  Weigher.deleteMany({}).then((weighers) => res.json(weighers));
+});
+
 module.exports = router;
