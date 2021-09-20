@@ -1,9 +1,16 @@
-import { getWeighers } from '../../store/actions/weigherActions';
+import {
+  getWeighers,
+  changeOrderField,
+} from '../../store/actions/weigherActions';
 import { connect } from 'react-redux';
 import ListWeighers from './listWeighers';
+import { sortedWeights } from '../../store/selectors/weighersSelector';
 
 const mapStateToProps = (state) => ({
-  weighers: state.weigherReducer.weighers,
+  weighers: sortedWeights(state),
+  orderField: state.weigherReducer.orderField,
 });
 
-export default connect(mapStateToProps, { getWeighers })(ListWeighers);
+export default connect(mapStateToProps, { getWeighers, changeOrderField })(
+  ListWeighers
+);

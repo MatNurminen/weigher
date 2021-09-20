@@ -2,15 +2,17 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Main from './components/Main';
 import Navbar from './components/layout/Navbar';
+import Weigher from './components/Weigher';
 
 function App() {
   return (
-    <BrowserRouter>
+    <>
       <Navbar />
       <Switch>
         <Route exact path='/' component={Main} />
+        <Route exact path='/punnitus' component={Weigher} />
       </Switch>
-    </BrowserRouter>
+    </>
   );
 }
 

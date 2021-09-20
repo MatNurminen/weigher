@@ -2,7 +2,12 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = (theme) => ({
   root: {
-    flexGrow: 1,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    '& > *:not(:last-child)': {
+      marginRight: theme.spacing(2),
+    },
   },
 });
 

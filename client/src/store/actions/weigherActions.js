@@ -12,8 +12,8 @@ export const getWeighers = () => async (dispatch) => {
 
 export const addWeigher = (weigher) => async (dispatch) => {
   try {
-    await axios.post('/api/weighers', weigher);
-    dispatch({ type: actions.ADD_WEIGHER });
+    const { data } = await axios.post('/api/weighers', weigher);
+    dispatch({ type: actions.ADD_WEIGHER, payload: data });
   } catch (error) {
     dispatch({ type: actions.ERROR, payload: error.message });
   }
@@ -29,3 +29,8 @@ export const deleteWeighers = () => async (dispatch) => {
     dispatch({ type: actions.ERROR, payload: error.message });
   }
 };
+
+export const changeOrderField = (fieldName) => ({
+  type: actions.CHANGE_ORDER_FIELD,
+  payload: fieldName,
+});

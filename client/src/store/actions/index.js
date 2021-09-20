@@ -1,4 +1,5 @@
 export const GET_WEIGHERS = 'GET_WEIGHERS';
 export const ADD_WEIGHER = 'ADD_WEIGHER';
 export const DELETE_WEIGHERS = 'DELETE_WEIGHER';
+export const CHANGE_ORDER_FIELD = 'CHANGE_ORDER_FIELD';
 export const ERROR = 'ERROR';

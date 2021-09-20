@@ -1,6 +1,7 @@
 import * as actions from '../actions';
 const initialState = {
-  weighers: null,
+  weighers: [],
+  orderField: 'date',
 };
 
 const weigherActs = (state = initialState, action) => {
@@ -8,9 +9,11 @@ const weigherActs = (state = initialState, action) => {
     case actions.GET_WEIGHERS:
       return { ...state, weighers: action.weighers };
     case actions.ADD_WEIGHER:
-      return null;
+      return { ...state, weighers: [...state.weighers, action.payload] };
     case actions.DELETE_WEIGHERS:
-      return null;
+      return initialState;
+    case actions.CHANGE_ORDER_FIELD:
+      return { ...state, orderField: action.payload };
     default:
       return state;
   }

@@ -1,8 +1,22 @@
 import { createSelector } from 'reselect';
 
-const sums = (state) => state.weigherReducer.weighers;
-console.log('TEST', sums);
+const weigher = (state) => state.weigherReducer;
 
-export const getSumWeights = createSelector(sums, (items) => {
-  return items.reduce((subtotal, item) => subtotal + item.weight, 0).toFixed(2);
+export const getSumWeights = createSelector(weigher, ({ weighers }) => {
+  return weighers.reduce((subtotal, item) => subtotal + item.weight, 0);
 });
+
+export const sortedWeights = createSelector(
+  weigher,
+  ({ weighers, orderField }) => {
+    return weighers.sort((a, b) => {
+      if (a[orderField] > b[orderField]) {
+        return 1;
+      } else if (a[orderField] < b[orderField]) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+  }
+);
